@@ -1,0 +1,35 @@
+
+server:
+  port: 8083
+spring:
+  application:
+    name: authorization-server
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?default-schema=auth
+    username: radhey
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: auth
+      allow-pool-suspension: true
+      auto-commit: true
+      connection-init-sql:
+      connection-test-query:
+      jdbc-url: jdbc:postgresql://localhost:5432/postgres?default-schema=auth-db
+      driver-class-name: org.postgresql.Driver
+      username: radhey
+      pool-name: auth-pool
+      idle-timeout: 30000
+      keepalive-time: 50000
+      minimum-idle: 2
+      maximum-pool-size: 5
+  jpa:
+    database: postgresql
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+    open-in-view: true
+    show-sql: true
+
